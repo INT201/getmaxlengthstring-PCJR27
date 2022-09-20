@@ -1,30 +1,21 @@
 const { template } = require('@babel/core')
-
-function getMaxLengthString(arrayOfString) {
-
- 
-  if(arrayOfString === null || arrayOfString === undefined){
-    return undefined
-  }
-  let answerMax =[]
-  let answer =arrayOfString[0]
-  for (const values of arrayOfString){
-    if (answerMax.length === 0){
-     answerMax = [values]
+  function getMaxLengthString(arrayOfString){
+    if(arrayOfString === null || arrayOfString===undefined){
+      return undefined
     }
-    else if (values.length >= answerMax[0].length){
-     if(values.length == answerMax[0].length){
-       answerMax.push(values)
-     }
-     else{
-       answerMax = [values] 
-     }
+    let result =[]
+    for(const max of arrayOfString){
+      if(result.length===0){
+        result=[max]
+      }else if (result[0].length<=max.length){
+        if(result[0].length === max.length){
+          result.push(max)
+        }else
+          result =[max]  
     }
   }
-    return answerMax
-  
+
+  return result
 }
-console.log(getMaxLengthString(['hello', 'hi', 'hey', 'Good Evening', 'Good Morning','Good Mornind']))
-console.log(getMaxLengthString(['hello','hi']))
-module.exports = getMaxLengthString
 
+module.exports = getMaxLengthString
